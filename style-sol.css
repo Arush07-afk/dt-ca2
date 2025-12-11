@@ -99,10 +99,24 @@ a{
 a:hover{
     text-decoration: underline;
 }
-iframe {
+/* iframe {
     
     width: 500px;
     height: 300px;
     border-radius: 8px;
     margin-top: 20px;
+} */
+
+iframe {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    iframe {
+        height: 250px;
+    }
 }
