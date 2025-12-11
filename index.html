@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Aid Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <header>
+        <i class="fas fa-heart logo-icon"></i>
+        <div class="header-text">
+            <h1>First Aid Guide</h1>
+            <p>Quick, reliable emergency guidance</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search for first aid guidance (e.g., burns, choking, bleeding)...">
+            </div>
+        </div>
+
+        <h2 class="section-title">Common Emergencies</h2>
+
+        <div class="card-grid" id="cardGrid">
+            <a href="/bleeding-sol.html" class="card" data-keywords="bleeding severe cuts wounds blood">
+                <div class="icon-box bg-red">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <h3>Severe Bleeding</h3>
+                <p>How to control and treat severe cuts and wounds</p>
+            </a>
+
+            <a href="/burns-sol.html" class="card" data-keywords="burns heat chemical electrical fire">
+                <div class="icon-box bg-orange">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Burns</h3>
+                <p>Treatment for heat, chemical, and electrical burns</p>
+            </a>
+
+            <a href="/chocking-sol.html" class="card" data-keywords="choking heimlich blocked airways throat obstruction">
+                <div class="icon-box bg-blue">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h3>Choking</h3>
+                <p>Heimlich maneuver and relief for blocked airways</p>
+            </a>
+
+            <a href="/cpr.html" class="card" data-keywords="cpr cardiopulmonary resuscitation cardiac arrest heart">
+                <div class="icon-box bg-pink">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>CPR</h3>
+                <p>Cardiopulmonary resuscitation for cardiac arrest</p>
+            </a>
+
+            <a href="/poison-sol.html" class="card" data-keywords="poisoning poison ingestion toxic chemicals">
+                <div class="icon-box bg-purple">
+                    <i class="fas fa-skull"></i>
+                </div>
+                <h3>Poisoning</h3>
+                <p>What to do if someone ingests poison</p>
+            </a>
+
+            <a href="/stroke-sol.html" class="card" data-keywords="heat stroke hyperthermia hot temperature overheating">
+                <div class="icon-box bg-yellow">
+                    <i class="fas fa-temperature-high"></i>
+                </div>
+                <h3>Heat Stroke</h3>
+                <p>Emergency treatment for severe heat illness</p>
+            </a>
+
+            <a href="/shock-sol.html" class="card" data-keywords="shock electric electrical current electrocution">
+                <div class="icon-box bg-blue">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Shock</h3>
+                <p>Recognizing and treating electric shock</p>
+            </a>
+
+            <a href="/fracture-sol.html" class="card" data-keywords="broken bones fractures breaks bone injury">
+                <div class="icon-box bg-grey">
+                    <i class="fas fa-bone"></i>
+                </div>
+                <h3>Broken Bones</h3>
+                <p>How to immobilize and care for suspected fractures</p>
+            </a>
+            
+            <a href="/overdose-sol.html" class="card" data-keywords="drug overdose drugs medication pills substance">
+                <div class="icon-box bg-red">
+                    <i class="fas fa-pills"></i>
+                </div>
+                <h3>Drug Overdose</h3>
+                <p>Emergency response for suspected overdose</p>
+            </a>
+
+            <a href="/seizure-sol.html" class="card" data-keywords="seizures convulsions epilepsy fits">
+                <div class="icon-box bg-purple">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <h3>Seizures</h3>
+                <p>How to help someone having a seizure</p>
+            </a>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
+            <h3>No results found</h3>
+            <p>Try different keywords like "burns", "bleeding", or "choking"</p>
+        </div>
+    </main>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const cardGrid = document.getElementById('cardGrid');
+        const cards = document.querySelectorAll('.card');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const keywords = card.getAttribute('data-keywords').toLowerCase();
+                
+                const searchText = `${title} ${description} ${keywords}`;
+                
+                if (searchText.includes(searchTerm)) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0 && searchTerm !== '') {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>
