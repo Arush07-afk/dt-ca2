@@ -1,12 +1,11 @@
-/* --- CSS Reset & Variables --- */
-    :root {
-        --bg-color: #FFF5F5;
-        --primary-red: #FF4D4F;
-        --text-dark: #1F1F1F;
-        --text-light: #666666;
-        --card-bg: #FFFFFF;
-        --shadow: 0 4px 6px rgba(0,0,0,0.02);
-        --radius: 12px;
+:root {
+    --bg-color: #FFF5F5;
+    --primary-red: #FF4D4F;
+    --text-dark: #1F1F1F;
+    --text-light: #666666;
+    --card-bg: #FFFFFF;
+    --shadow: 0 4px 6px rgba(0,0,0,0.02);
+    --radius: 12px;
     }
     * {
         box-sizing: border-box;
@@ -28,7 +27,7 @@
         background-color: white;
         padding: 20px 40px;
         display: flex;
-        align-items: center;
+        justify-content: space-between;
         gap: 15px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
@@ -36,6 +35,8 @@
         color: var(--primary-red);
         font-size: 2rem;
     }
+   
+    
     .header-text h1 {
         font-size: 1.2rem;
         color: var(--primary-red);
@@ -45,6 +46,14 @@
         font-size: 0.85rem;
         color: var(--text-light);
     }
+    #emergency-no {
+        margin-left: auto;
+        color: var(--text-light);
+        padding: 10px 10px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
     /* --- Main Content --- */
     main {
         max-width: 1200px;
